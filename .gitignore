@@ -1,1 +1,7 @@
 .vscode/
+node_modules
+.babelrc
+.eslintrc
+.jshintrc
+lib
+package.json

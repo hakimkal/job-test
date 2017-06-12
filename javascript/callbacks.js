@@ -12,6 +12,7 @@ const sortBooksAlphabetically = (books, callback) => {
   return callback(sortedBooks)
 }
 
+/*
 const getBooksAsync = (callback) => {
   setTimeout((books) => {
     callback(books, filterBooksWithTitleStartingWithA)
@@ -19,3 +20,31 @@ const getBooksAsync = (callback) => {
 }
 
 getBooksAsync(sortBooksAlphabetically)
+*/
+
+
+/* Javascript Promise  */
+let delay= (interval)=>{
+  return new Promise((resolve,reject)=>{
+try {
+        setTimeout(resolve, interval);
+    }
+    catch (e) {
+        reject(e);
+    }
+
+  });
+};
+
+/* Implementation of the getBookAsync func using promise */
+
+const getBookAsync  = delay(2000).then((callback)=>{
+  return  callback(books, filterBooksWithTitleStartingWithA);
+},
+(error)=>{
+return "An error occurred " + e;
+}
+);
+
+getBooksAsync(sortBooksAlphabetically);
+

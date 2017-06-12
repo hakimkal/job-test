@@ -9,31 +9,33 @@
  
  */
 
-import books from './books';
+import books from "./books";
 
-let topThree = () =>{
+let getContent = book => {
+  return (
+    "book: " +
+    book.title +
+    ", author: " +
+    book.author +
+    ", category:  " +
+    book.category +
+    ", ratings: " +
+    book.ratings
+  );
+};
+let sortBook = () => {};
+let topThree = () => {
+  let topThree = books
+    .sort((a, b) => {
+      return b.ratings - a.ratings;
+    })
+    .slice(0, 3);
 
-let topThree = books.sort((a,b)=>{return (b.ratings - a.ratings);}).slice(0,3);
-let topThreeArray=[];
-
-topThree.map((book) =>{
-
-topThreeArray.push( "book: " + book.title + ", author: " + book.author + ", category:  " + book.category + ", ratings: " + book.ratings)
-
-
-});
-/* print the array */
-//console.log(topThreeArray);
-
-return(topThreeArray);
-
-
-
+  return topThree.map(getContent);
 };
 
-export default  topThree;
+export default topThree;
 
 /**
  * To use module: import topThree and call topThree()
  */
-

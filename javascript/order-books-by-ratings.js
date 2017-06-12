@@ -13,8 +13,8 @@ let orderBooksByRatings = books =>{
    
   /* Sort array by  ratings */ 
 
-books.sort((a,b)=>{return (b.ratings - a.ratings)});
-console.log(books);
+return(books.sort((a,b)=>{return (b.ratings - a.ratings);}));
+
 
 };   
 

@@ -10,6 +10,7 @@
  */
 
 import books from "./books";
+/* format the content function  */
 
 let getContent = book => {
   return (
@@ -23,13 +24,18 @@ let getContent = book => {
     book.ratings
   );
 };
-let sortBook = () => {};
+
+/* compare ratings function  */
+
+let compareRatings= (a,b)=>{
+  return b.ratings - a.ratings;
+     
+};
+
+/* get top three books from collection */
 let topThree = () => {
   let topThree = books
-    .sort((a, b) => {
-      return b.ratings - a.ratings;
-    })
-    .slice(0, 3);
+    .sort(compareRatings).slice(0, 3);
 
   return topThree.map(getContent);
 };

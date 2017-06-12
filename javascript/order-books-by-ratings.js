@@ -20,3 +20,5 @@ return(books.sort((a,b)=>{return (b.ratings - a.ratings);}));
 
 //orderBooksByRatings(books);
 
+import topThree from './print-top-books';
+console.log(topThree());

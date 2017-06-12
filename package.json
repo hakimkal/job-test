@@ -1,0 +1,22 @@
+{
+    "name": "javascript",
+    "version": "1.0.0",
+    "description": "",
+    "main": "books.js",
+
+    "scripts": {
+        "build": "babel javascript -d lib"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-cli": "^6.0.15",
+        "babel-eslint": "^7.2.3",
+        "babel-preset-env": "^1.5.2",
+        "babel-preset-es2015": "^6.0.15",
+        "babel-preset-stage-0": "^6.24.1",
+        "babelify": "^7.3.0",
+
+        "eslint": "^3.19.0"
+    }
+}

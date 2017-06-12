@@ -1,25 +1,31 @@
 /* 
-Write a function which accepts an author and returns books by that author in a file name
- “javascript/fetch-books-by-authors.js”
+
+Write a function which accepts an author and returns books by that
+ author in a file name “javascript/fetch-books-by-authors.js”
 Push both codes to your copy of the repository
 
 */
-import books from './books';
 
-let getBooksByAuthor= (author)=>{
-let booksByAuthor = [];
-books.filter(book=>{
-    if(book.author == author){
+import books from "./books";
 
-    
-    booksByAuthor.push(book) ;
-}
+/* Pass the author name to arg  object key 'author' */
 
-  
-});
-return booksByAuthor;  
+let arg = { author: "George Orwell" };
+
+//Callback 
+
+let isBookAuthor = book => {
+  if (book.author == arg.author) {
+    return true;
+  }
+
+  return false;
 };
 
 
- //getBooksByAuthor("George Orwell");
+let getBooksByAuthor = () => {
+  return books.filter(isBookAuthor, arg);
+};
 
+
+//console.log(getBooksByAuthor());

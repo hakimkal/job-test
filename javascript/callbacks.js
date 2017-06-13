@@ -1,50 +1,58 @@
-import books from './books'
+import books from "./books";
 
 const filterBooksWithTitleStartingWithA = (sortedBooks, callback) => {
-  let filteredBooks
+  let filteredBooks;
   /* filter logic here */
-  return callback(filteredBooks)
-}
 
-const sortBooksAlphabetically = (books, callback) => {
-  let sortedBooks
-  /* sorting logic books */
-  return callback(sortedBooks)
-}
-
-/*
-const getBooksAsync = (callback) => {
-  setTimeout((books) => {
-    callback(books, filterBooksWithTitleStartingWithA)
-  }, 2000)
-}
-
-getBooksAsync(sortBooksAlphabetically)
-*/
-
-
-/* Javascript Promise  */
-let delay= (interval)=>{
-  return new Promise((resolve,reject)=>{
-try {
-        setTimeout(resolve, interval);
+  return new Promise((resolve, reject) => {
+    try {
+      callback(filteredBooks);
+    } catch (e) {
+      reject(e);
     }
-    catch (e) {
-        reject(e);
-    }
-
   });
 };
 
-/* Implementation of the getBookAsync func using promise */
+const sortBooksAlphabetically = (books, callback) => {
+  let sortedBooks;
+  /* sorting logic books */
 
-const getBookAsync  = delay(2000).then((callback)=>{
-  return  callback(books, filterBooksWithTitleStartingWithA);
-},
-(error)=>{
-return "An error occurred " + e;
-}
-);
+  return new Promise((resolve, reject) => {
+    try {
+      callback(sortedBooks);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
-getBooksAsync(sortBooksAlphabetically);
 
+//load the callback method 
+let loadCallback = callback => {
+  return new Promise((resolve, reject) => {
+    try {
+      callback(books, filterBooksWithTitleStartingWithA);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+let getBooksAsync = callback => {
+  loadCallback(sortBooksAlphabetically);
+};
+/*
+delay promise
+*/
+let delay = interval => {
+  return new Promise((resolve, reject) => {
+    try {
+      setTimeout(resolve, interval);
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
+
+
+delay(2000).then(getBooksAsync);
